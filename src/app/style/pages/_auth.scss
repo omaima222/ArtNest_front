@@ -1,0 +1,74 @@
+.authPage{
+  background-color: $mainColor;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.authForm{
+  background-image: url('images/bg.png');
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  height: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.48) -6px 6px 0px 2px;
+  h1{
+    font-family: $text;
+    color: $backColor;
+  }
+  form{
+    width: 98%;
+    height: 90%;
+    font-family: $text;
+    .inputDiv{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+      label{
+        margin-bottom: 0.5rem;
+        color: $backColor;
+      }
+      input{
+        height: 2rem;
+        border: none;
+        border-radius: 2px;
+        padding: 2px;
+        background-color: $backColor;
+        transition: 0.3s;
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+    button{
+      @include greenButton;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    h2{
+      font-size: 0.9rem;
+      font-weight: 400;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+    }
+    a{
+      text-decoration: none;
+      color: $backColor;
+      font-weight: bolder;
+    }
+  }
+}
+
+.error{
+  color: #880a0a;
+}

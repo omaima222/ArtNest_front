@@ -1,0 +1,37 @@
+.welcome{
+  @include sakuraBg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .container{
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    p{
+      padding: 0.5rem;
+      font-family: $text;
+      color: $backColor;
+      text-align: center;
+    }
+    div{
+      width: 60%;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      button{
+         @include greenButton;
+        width: 10rem;
+      }
+    }
+  }
+}
+.logo{
+  font-family: $logo;
+  color: $mainColor;
+  font-size: 5rem;
+}

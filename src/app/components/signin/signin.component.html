@@ -1,0 +1,30 @@
+<div class="authPage">
+  <div class="authForm">
+    <h1>SIGN IN</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="signinFrom">
+      <div class="inputDiv">
+        <label>EMAIL</label>
+        <input type="email" formControlName="email"  required>
+        <div *ngIf="signinFrom?.get('email')?.hasError('required') && submitted">
+          <p class="error">Email is required !</p>
+        </div>
+        <div *ngIf="signinFrom?.get('email')?.hasError('email') && submitted">
+          <p class="error">Email should be valid !</p>
+        </div>
+      </div>
+      <div class="inputDiv">
+        <label>PASSWORD</label>
+        <input type="password" formControlName="password" required>
+        <div *ngIf="signinFrom?.get('password')?.hasError('required') && submitted">
+          <p class="error">Password is required !</p>
+        </div>
+        <div *ngIf="signinFrom?.get('password')?.hasError('minlength') && submitted">
+          <p class="error">Password should be at least 8 characters !</p>
+        </div>
+      </div>
+      <button type="submit">SUBMIT</button>
+      <h2>Don't have an account ? <a routerLink="/signup">SIGN UP</a></h2>
+    </form>
+  </div>
+</div>
+
