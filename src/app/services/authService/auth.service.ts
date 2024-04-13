@@ -14,10 +14,11 @@ export class AuthService {
 
   signUp(user:SignupDto): Observable<string>{
     this.removeToken()
-    return this.httpClient.post<{ token : string }>(this.url + "auth/register", user)
+    return this.httpClient.post<{ token : string , user_id : number, role : string  }>(this.url + "auth/register", user)
       .pipe(
         map(response => {
-          this.setToken(response.token)
+          this.setToken(response.token, response.user_id.toString())
+          this.setRole(response.role);
           return response.token
         }),
       );
@@ -25,21 +26,24 @@ export class AuthService {
 
   signIn(user: SigninDto): Observable<string> {
     this.removeToken();
-    return this.httpClient.post<{ token : string }>(this.url + 'auth/authenticate', user)
+    return this.httpClient.post<{ token : string, user_id : number, role : string }>(this.url + 'auth/authenticate', user)
       .pipe(
         map(response => {
-          this.setToken(response.token)
+          this.setToken(response.token, response.user_id.toString())
+          this.setRole(response.role);
           return response.token
         }),
       );
   }
 
 
-  setToken(token: string): void {
+  setToken(token: string, user_id : string): void {
+    localStorage.setItem('user_id', user_id);
     localStorage.setItem('token', token);
   }
 
   removeToken(): void {
+    localStorage.removeItem('user_id');
     localStorage.removeItem('token');
   }
 
@@ -49,5 +53,10 @@ export class AuthService {
 
   getRole(): string | null {
     return localStorage.getItem('role');
+  }
+
+
+  getUserId(): string | null {
+    return localStorage.getItem('user_id');
   }
 }

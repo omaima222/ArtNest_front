@@ -1,0 +1,30 @@
+.dashboard{
+  box-sizing: border-box;
+  height: 100%;
+  width: 90vw;
+  display: flex;
+  .content{
+    position: absolute;
+    left: 25%;
+  }
+}
+.add{
+  background-color: $mainColor;
+  font-family: $text;
+  padding: 5px;
+  width: 8rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.myPosts{
+  width: 50rem;
+}
+.myposts{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: start;
+}

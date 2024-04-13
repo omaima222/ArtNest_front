@@ -1,1 +1,12 @@
-<p>posts works!</p>
+<div class="posts">
+  <div class="post" *ngFor="let post of posts">
+    <button class="artist"><img src="assets/artist.png" title="{{ post.user.email }}"></button>
+    <div class="container">
+      <img src="{{ post.image }}" alt="">
+      <div>
+        <h3>{{ post.name }}</h3>
+        <p>{{ post.description.substring(0, 100)+"..." }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { DemandsComponent } from './components/demands/demands.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import {firebaseConfig} from "./config/env";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,17 @@ import { DemandsComponent } from './components/demands/demands.component';
     HeaderComponent,
     PostsComponent,
     OffersComponent,
-    DemandsComponent
+    DemandsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
     provideClientHydration(),

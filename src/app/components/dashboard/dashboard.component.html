@@ -1,0 +1,61 @@
+<div class="dashboard">
+  <div class="sidebar">
+    <button (click)="showForm = false">MY POSTS</button>
+    <button>MY OFFERS</button>
+    <button>MY COMMISSIONS</button>
+  </div>
+  <div class="content">
+    <ng-container *ngIf="!showForm; else form">
+      <!-- Display posts -->
+      <div class="myPosts">
+        <button class="add" (click)="showForm = true">ADD</button>
+        <div class="myposts">
+          <div class="post" *ngFor="let post of myPosts">
+            <button class="artist"><img src="assets/artist.png" title="{{ post.user.email }}"></button>
+            <div class="container">
+              <img src="{{ post.image }}" alt="">
+              <div>
+                <h3>{{ post.name }}</h3>
+                <p>{{ post.description.substring(0, 100)+"..." }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #form>
+      <div class="Form">
+        <div class="head">
+          <h1>ADD POST</h1>
+          <button (click)="showForm = false">X</button>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="postForm">
+          <div class="inputDiv">
+            <label>NAME</label>
+            <input type="text" formControlName="name"  required>
+            <div *ngIf="postForm?.get('name')?.hasError('required') && submitted">
+              <p class="error">Name is required !</p>
+            </div>
+          </div>
+          <div class="inputDiv">
+            <label>DESCRIPTION</label>
+            <input type="text" formControlName="description" required>
+            <div *ngIf="postForm?.get('description')?.hasError('required') && submitted">
+              <p class="error">Description is required !</p>
+            </div>
+          </div>
+          <div class="inputDiv">
+            <label>IMAGE</label>
+            <input id="file" type="file" formControlName="image" required>
+            <div *ngIf="postForm?.get('image')?.hasError('required') && submitted">
+              <p class="error">Image is required !</p>
+            </div>
+          </div>
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

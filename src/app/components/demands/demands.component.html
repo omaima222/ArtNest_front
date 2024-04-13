@@ -1,1 +1,21 @@
-<p>demands works!</p>
+<div class="demands">
+  <table>
+    <tr class="tableHead">
+      <th>ID</th>
+      <th>ARTIST</th>
+      <th>OFFER</th>
+      <th>DESCRIPTION</th>
+      <th>STATUS</th>
+      <th>PROGRESS</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let demand of myDemands">
+      <td>{{ demand.id }}</td>
+      <td>{{ demand.artist.firstName +" "+demand.artist.lastName }}</td>
+      <td>{{ demand.offer.name }}</td>
+      <td>{{ demand.description.substring(0, 30)+"..." }}</td>
+      <td>{{ demand.status }}</td>
+      <td>{{ demand.progress }}</td>
+    </tr>
+  </table>
+</div>
